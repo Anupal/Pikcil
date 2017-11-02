@@ -17,15 +17,15 @@ else { // User exists
         $_SESSION['email'] = $user['email'];
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['last_name'] = $user['last_name'];
-        $_SESSION['active'] = $user['active'];
-
+        $_SESSION['dp'] = $user['dp'];
         // This is how we'll know the user is logged in
         $_SESSION['logged_in'] = true;
         $_SESSION['message'] = "Logged in!";
-        header("location: profile.php");
+        header("location: home.php");
     }
     else {
         $_SESSION['message'] = "You have entered wrong password, try again!";
         header("location: error.php");
     }
 }
+?>

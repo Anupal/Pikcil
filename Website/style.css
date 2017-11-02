@@ -1,0 +1,114 @@
+
+body{
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.19);
+    height: 60px;
+    line-height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}
+
+
+#add{
+    position: fixed;
+    bottom: 5vh;
+    margin-left: 92vw;
+    z-index: 30;
+    width: 35px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.options{
+    float: right;
+}
+.edge-option{
+    padding: 0px 10vw 0px 0;
+    float: right;
+}
+
+.logo{
+    float: left;
+    padding: 10px 0px 0px 10vw;
+}
+
+
+li a {
+    display: block;
+    color: #272727;
+    text-align: center;
+    padding: 0px 25px;
+    text-decoration: none;
+}
+
+li :hover{
+    text-decoration: underline;
+}
+
+
+.content{
+    margin: 120px 20vw 120px 20vw;
+    padding: 0 0 20px 0;
+    text-align:justify;
+}
+
+.button1 {
+    background-color: white;
+    color: #272727;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 80px;
+    padding: 5px;
+    height: 40px;
+    float: left;
+    cursor:pointer;
+}
+
+.button1:hover{
+    color: #ffffff;
+    background-color: #272727;
+    border: 2px solid #272727;
+    cursor:pointer;
+}
+
+div.blog {
+  background-color: #ffffff;
+  width:100%;
+  height:100%;
+  z-index:10;
+  top:0;
+  left:0;
+  position:fixed;
+  text-align:justify;
+  font-size: 20px;
+  display: block;
+}
+
+.btnsub{
+    color: #fff;
+    background: #630d8b;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 14px;
+    border-color: Transparent;
+    padding: 6px 11px 6px 11px;
+    margin: 4px;
+    cursor:pointer;
+}
+
+.btnsub:hover{
+    background: #272727;
+}

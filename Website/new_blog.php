@@ -5,19 +5,20 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $username = "anupal";
+            $email = $_SESSION['email'];
             $title = $mysqli->real_escape_string($_POST['title']);
-            $content = $mysqli->real_escape_string($_POST['content']);
+            $content = $_POST['content'];
             $likes=0;
             $image_path = $mysqli->real_escape_string('images/'.$_FILES['image']['name']);
 
             if (preg_match("!image!",$_FILES['image']['type'])) {
                 if (copy($_FILES['image']['tmp_name'], $image_path)){
 
-                        $sql = "INSERT INTO blogs (username, title, image, content, likes) "
-                                . "VALUES ('$username', '$title', '$image_path', '$content', '$likes')";
+                        $sql = "INSERT INTO blogs (email, title, image, content, likes) "
+                                . "VALUES ('$email', '$title', '$image_path', '$content', '$likes')";
 
-                        if ($mysqli->query($sql) === true){
+                        $yolo =$mysqli->query($sql) or die($mysqli->error);
+                        if ($yolo){
                             $_SESSION['message'] = "Posted!";
                             header("location: home.php");
                         }
@@ -43,15 +44,27 @@
 <html>
     <head>
         <title>New Blog</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <style>
+            .field{
+                border-radius: 3px;
+                border-width: 1px;
+                border-color: #630d8b;
+                padding: 10px;
+                font-size: 14px;
+                max-width: 100%;
+            }
+        </style>
     </head>
     <body>
-        <h1>New Blog</h1>
+        <p style="font-family: Rockwell;text-align: center;font-size:30px;color:#630d8b;margin-bottom:0;">New Blog</p>
         <?= $_SESSION['message'] ?>
-        <form method="post" action="new_blog.php" autocomplete="off" enctype="multipart/form-data">
-            <input type="text" placeholder="Title" name="title" required><br><br>
-            <textarea rows="20" cols="150" name="content" required></textarea><br><br>
-            <input type="file" name="image" accept="image/*" required /><br><br>
-            <input type="submit" name="upload" value="Submit" >
+        <form class='content' style='margin-top:50px' method="post" action="new_blog.php" autocomplete="off" enctype="multipart/form-data">
+            <input class='field' type="text" placeholder="Title" name="title" required><br><br>
+            <textarea class='field' rows="40" cols="115" name="content" required></textarea><br><br>
+            <input class='field' type="file" name="image" accept="image/*" required /><br><br>
+            <input class="btnsub" type="submit" name="upload" value="Submit" >
         </form>
     </body>
 </html>

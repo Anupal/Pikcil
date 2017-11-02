@@ -3,6 +3,8 @@
 session_start();
 session_unset();
 session_destroy();
+
+header( "location: index.php" );
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +13,7 @@ session_destroy();
   <title>Error</title>
 </head>
 
-<body>
+<body id="body">
     <div class="form">
           <h1>Thanks for stopping by</h1>
 

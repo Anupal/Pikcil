@@ -19,13 +19,23 @@
           header("location: error.php");
         }
         else {
+
             // Makes it easier to read
             $first_name = $_SESSION['first_name'];
             $last_name = $_SESSION['last_name'];
             $email = $_SESSION['email'];
             $dp = $_SESSION['dp'];
 
-            $sql = "SELECT title, image FROM blogs WHERE email='{$email}'";
+            $email_post = $_GET['email_post'];
+            $sql = "SELECT dp, first_name, last_name FROM users WHERE email = '$email_post'";
+            $result = $mysqli->query($sql) or die($mysqli->error);
+            $post_user = $result->fetch_assoc();
+
+            $f_name = $post_user['first_name'];
+            $l_name = $post_user['last_name'];
+            $image_user = $post_user['dp'];
+
+            $sql = "SELECT title, image FROM blogs WHERE email='{$email_post}'";
             $result = $mysqli->query($sql) or die($mysqli->error);
         }
     ?>
@@ -37,10 +47,9 @@
     </ul>
 
     <div class="content" style='border-bottom-style: solid;border-bottom-color:#d8d8d8;border-bottom-width:1px;'>
-          <img <?php echo "src='{$dp}'" ?> style='border-radius:100px; width:150px;'>
-          <h2><?php echo $first_name.' '.$last_name; ?></h2>
-          <p><?= $email ?></p>
-          <a href="logout.php"><button class="btnsub" name="logout"/>Log Out</button></a>
+          <img <?php echo "src='{$image_user}'" ?> style='border-radius:100px; width:150px;'>
+          <h2><?php echo $f_name.' '.$l_name; ?></h2>
+          <p><?= $email_post ?></p>
     </div>
 
     <p style="font-family: Rockwell;text-align: center;font-size:30px;color:#630d8b;">Featured Work</p>
